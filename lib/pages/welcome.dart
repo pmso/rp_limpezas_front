@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:rp_limpezas_front/enum/storageKeysEnum.dart';
+import 'package:rp_limpezas_front/pages/login.dart';
+import 'package:rp_limpezas_front/service/storageService.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -32,7 +35,9 @@ class WelcomePage extends StatelessWidget {
               const SizedBox(height: 40),
               ElevatedButton(
                 onPressed: () {
-                  // Navegue para a próxima página ou faça login
+                  StorageService.setGenericValue(StorageKeysEnum.firstTime.key, 'false');
+                  // Navigate to the login page
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => LoginPage()));
                 },
                 child: const Text('Começar'),
               ),
